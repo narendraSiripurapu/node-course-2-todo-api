@@ -23,7 +23,7 @@ MongoClient.connect('mongodb://localhost:27017/Todoapp',(err,db)=>{
         console.log('unable to fetch todos',err);
      });
 
-    });     
+  
 
 
      /* db.collection('Todos').insertOne({
