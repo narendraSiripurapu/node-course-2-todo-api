@@ -1,3 +1,4 @@
+
 const {MongoClient, ObjectID} = require('mongodb');
 
 
@@ -8,13 +9,18 @@ MongoClient.connect('mongodb://localhost:27017/Todoapp',(err,db)=>{
    }
     console.log('connected to mongodb server');
 
-    db.collection('Todos').find({completed:false}).toArray().then((docs)=>{
-        console.log('todos');
-        console.log(JSON.stringify(docs,undefined,2));
-    },(err)=>{
-       console.log('unable to fetch todos',err);
-    });
+   db.collection('Todos').findOneAndUpdate({
+       _id = new ObjectID('5a6891f718e3b81cfc0d57cb')},
+    {
+        $set:{
+            completed: true
+        }
+    },{
+        returnOriginal:false
 
+    }).then((result)=>{
+        console.log(result);
+    });
     // db.close()
 });
    
